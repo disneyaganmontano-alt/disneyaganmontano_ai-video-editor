@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disney Montao | AI Video Editor &amp; Social Media Strategist</title>
+<meta name="description" content="AI Video Editor combining social media strategy, creative direction, AI video generation, and professional post-production to create scroll-stopping UGC ads, cinematic films, claymotion explainers, and social-first content.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b0b0c;
+  --bg-alt:#131315;
+  --surface:#18181b;
+  --surface-2:#1e1e21;
+  --line:#2a2a2e;
+  --line-soft:#242427;
+  --text:#f3f1ec;
+  --text-dim:#a19e97;
+  --text-dimmer:#716e68;
+  --accent:#f5b942;
+  --accent-soft:#f5b94222;
+  --rec:#ff4433;
+  --radius:2px;
+  --maxw:1280px;
+  --ease:cubic-bezier(.16,.84,.24,1);
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Sora', sans-serif;
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit;}
+ul{list-style:none;}
+
+::selection{background:var(--accent); color:#0b0b0c;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 40px;}
+@media (max-width:640px){ .wrap{padding:0 22px;} }
+
+.mono{font-family:'IBM Plex Mono', monospace;}
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:"";
+  width:22px; height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+
+h1,h2,h3,h4{
+  font-family:'Bricolage Grotesque', sans-serif;
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-0.01em;
+}
+
+.section{ padding:130px 0; position:relative; }
+@media (max-width:900px){ .section{padding:88px 0;} }
+
+.section-head{ max-width:680px; margin-bottom:64px; }
+.section-head h2{ font-size:clamp(32px,4.4vw,52px); margin-bottom:18px;}
+.section-head p{ color:var(--text-dim); font-size:17px; max-width:540px;}
+
+.divider{ height:1px; background:var(--line); width:100%; }
+
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:15px 28px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:13px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  border-radius:var(--radius);
+  transition:transform .35s var(--ease), background .3s, color .3s, border-color .3s;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:var(--accent);
+  color:#0b0b0c;
+  font-weight:600;
+}
+.btn-primary:hover{ transform:translateY(-2px); background:#ffca66; }
+.btn-outline{
+  border:1px solid var(--line);
+  color:var(--text);
+}
+.btn-outline:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+
+/* ---------- NAV ---------- */
+header{
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background:rgba(11,11,12,.72);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s;
+}
+header.scrolled{ border-bottom-color:var(--line); }
+nav.wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  height:78px;
+}
+.logo{
+  font-family:'Bricolage Grotesque', sans-serif;
+  font-weight:700;
+  font-size:18px;
+  letter-spacing:-0.01em;
+}
+.logo span{ color:var(--accent); }
+.nav-links{ display:flex; align-items:center; gap:38px; }
+.nav-links a{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12.5px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--text-dim);
+  transition:color .25s;
+  position:relative;
+}
+.nav-links a:hover{ color:var(--text); }
+.nav-right{ display:flex; align-items:center; gap:28px; }
+.hamburger{ display:none; flex-direction:column; gap:5px; width:26px; z-index:1100; }
+.hamburger span{ height:1.5px; width:100%; background:var(--text); transition:all .3s var(--ease); }
+.hamburger.open span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2){ opacity:0; }
+.hamburger.open span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
+
+@media (max-width:900px){
+  .nav-links{
+    position:fixed; inset:0 0 0 auto; width:min(320px,80vw); height:100vh;
+    background:var(--bg-alt); border-left:1px solid var(--line);
+    flex-direction:column; justify-content:center; align-items:flex-start;
+    gap:26px; padding:0 40px;
+    transform:translateX(100%); transition:transform .4s var(--ease);
+  }
+  .nav-links.open{ transform:translateX(0); }
+  .nav-links a{ font-size:15px; }
+  .nav-right .btn-primary{ display:none; }
+  .nav-links .mobile-cta{ display:inline-flex; margin-top:12px; }
+  .hamburger{ display:flex; }
+}
+.mobile-cta{ display:none; }
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:100vh;
+  display:flex; align-items:center;
+  padding-top:140px; padding-bottom:80px;
+  position:relative;
+}
+.hero-grid{
+  display:grid; grid-template-columns:1.15fr .85fr; gap:60px; align-items:center;
+}
+@media (max-width:980px){
+  .hero-grid{ grid-template-columns:1fr; gap:56px; }
+  .hero{ padding-top:120px; }
+}
+.hero h1{
+  font-size:clamp(42px,6.4vw,84px);
+  margin:22px 0 26px;
+}
+.hero-sub{
+  font-size:19px; color:var(--text-dim); max-width:480px; margin-bottom:14px;
+}
+.hero-body{ color:var(--text-dim); font-size:16px; max-width:480px; margin-bottom:8px; }
+.hero-question{
+  font-family:'Bricolage Grotesque', sans-serif;
+  font-weight:600;
+  font-style:italic;
+  color:var(--text);
+  font-size:21px;
+  margin:20px 0 36px;
+  border-left:2px solid var(--accent);
+  padding-left:18px;
+}
+.hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; }
+
+.hero-frame{
+  position:relative;
+  aspect-ratio:9/14.5;
+  max-width:380px;
+  margin:0 auto;
+  border-radius:6px;
+  overflow:hidden;
+  background:var(--surface);
+}
+.viewfinder{ position:relative; }
+.viewfinder::before,.viewfinder::after,
+.vf-corner-tl,.vf-corner-tr,.vf-corner-bl,.vf-corner-br{ content:""; }
+.vf-corner{
+  position:absolute; width:22px; height:22px; z-index:5; pointer-events:none;
+}
+.vf-corner.tl{ top:14px; left:14px; border-top:2px solid var(--accent); border-left:2px solid var(--accent); }
+.vf-corner.tr{ top:14px; right:14px; border-top:2px solid var(--accent); border-right:2px solid var(--accent); }
+.vf-corner.bl{ bottom:14px; left:14px; border-bottom:2px solid var(--accent); border-left:2px solid var(--accent); }
+.vf-corner.br{ bottom:14px; right:14px; border-bottom:2px solid var(--accent); border-right:2px solid var(--accent); }
+
+.hero-frame video{ width:100%; height:100%; object-fit:cover; }
+.rec-badge{
+  position:absolute; top:16px; left:44px; z-index:5;
+  display:flex; align-items:center; gap:7px;
+  font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.08em;
+  color:#fff; background:rgba(0,0,0,.45); padding:5px 9px; border-radius:20px;
+  backdrop-filter:blur(4px);
+}
+.rec-dot{ width:6px; height:6px; border-radius:50%; background:var(--rec); animation:pulse 1.4s infinite; }
+@keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+.hero-tc{
+  position:absolute; bottom:16px; right:44px; z-index:5;
+  font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:#fff;
+  background:rgba(0,0,0,.45); padding:5px 9px; border-radius:3px;
+}
+.hero-sound-toggle{
+  position:absolute; bottom:16px; left:44px; z-index:5;
+  width:30px; height:30px; border-radius:50%;
+  background:rgba(0,0,0,.5); color:#fff; font-size:14px;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid rgba(255,255,255,.25);
+}
+
+/* ---------- ABOUT ---------- */
+.about{ background:var(--bg-alt); }
+.about-grid{
+  display:grid; grid-template-columns:.9fr 1.1fr; gap:70px; align-items:start;
+}
+@media (max-width:900px){ .about-grid{ grid-template-columns:1fr; gap:48px; } }
+.about-photo{
+  position:sticky; top:110px;
+  border-radius:6px; overflow:hidden;
+  border:1px solid var(--line);
+}
+@media (max-width:900px){ .about-photo{ position:static; max-width:360px; margin:0 auto; } }
+
+.about-statement{
+  font-family:'Bricolage Grotesque', sans-serif;
+  font-weight:700;
+  font-size:clamp(26px,3.2vw,38px);
+  line-height:1.18;
+  margin-bottom:38px;
+  letter-spacing:-.01em;
+}
+.about-body p{ color:var(--text-dim); font-size:17px; margin-bottom:22px; max-width:560px; }
+.about-body strong{ color:var(--text); font-weight:600; }
+.about-body em{
+  font-style:italic; color:var(--accent); font-weight:600;
+}
+.about-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:32px; }
+.about-tag{
+  font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:.05em;
+  border:1px solid var(--line); padding:7px 13px; border-radius:20px; color:var(--text-dim);
+}
+
+/* ---------- FIRST THREE SECONDS ---------- */
+.f3s{
+  padding:170px 0;
+  position:relative;
+  text-align:center;
+  overflow:hidden;
+}
+.f3s-countdown{
+  display:flex; align-items:center; justify-content:center; gap:0;
+  margin-bottom:56px;
+  height:150px;
+}
+.f3s-num{
+  font-family:'Bricolage Grotesque', sans-serif;
+  font-weight:800;
+  font-size:clamp(64px,11vw,150px);
+  color:var(--line);
+  transition:color .5s var(--ease), transform .5s var(--ease), opacity .5s var(--ease);
+  opacity:.25; transform:scale(.8);
+  width:clamp(90px,13vw,190px);
+}
+.f3s-num.lit{ color:var(--accent); opacity:1; transform:scale(1); }
+.f3s-num.flash{ color:var(--text); }
+.f3s-sep{
+  font-family:'IBM Plex Mono', monospace;
+  color:var(--line-soft); font-size:28px;
+}
+.f3s h2{
+  font-size:clamp(28px,5vw,58px);
+  max-width:900px; margin:0 auto 22px;
+  line-height:1.12;
+}
+.f3s p{ color:var(--text-dim); max-width:560px; margin:0 auto; font-size:16.5px; }
+.f3s-ring{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:min(560px,86vw); height:min(560px,86vw);
+  border:1px solid var(--line-soft); border-radius:50%;
+  opacity:.5; z-index:0;
+}
+.f3s-inner{ position:relative; z-index:2; }
+
+/* ---------- WORK / PORTFOLIO ---------- */
+.work-head-row{
+  display:flex; justify-content:space-between; align-items:flex-end; gap:30px; margin-bottom:48px; flex-wrap:wrap;
+}
+.filters{ display:flex; gap:10px; flex-wrap:wrap; }
+.filter-btn{
+  font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+  padding:10px 18px; border:1px solid var(--line); border-radius:30px; color:var(--text-dim);
+  transition:all .25s;
+}
+.filter-btn:hover{ color:var(--text); border-color:var(--text-dimmer); }
+.filter-btn.active{ background:var(--accent); color:#0b0b0c; border-color:var(--accent); font-weight:600; }
+
+.featured-project{
+  display:grid; grid-template-columns:.85fr 1.15fr; gap:56px; align-items:center;
+  margin-bottom:90px;
+  padding-bottom:90px;
+  border-bottom:1px solid var(--line);
+}
+@media (max-width:900px){ .featured-project{ grid-template-columns:1fr; gap:36px; } }
+.featured-video{
+  position:relative; border-radius:6px; overflow:hidden; background:var(--surface);
+  aspect-ratio:9/15.5; max-width:400px;
+}
+.featured-video video{ width:100%; height:100%; object-fit:cover; }
+.featured-info .eyebrow{ margin-bottom:20px; }
+.featured-info h3{ font-size:clamp(28px,3.6vw,44px); margin-bottom:16px; }
+.featured-info p{ color:var(--text-dim); font-size:16.5px; margin-bottom:26px; max-width:480px; }
+.fp-meta{ display:grid; grid-template-columns:1fr 1fr; gap:18px 24px; margin-top:30px; max-width:460px; }
+.fp-meta-item .label{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.08em; color:var(--text-dimmer); text-transform:uppercase; margin-bottom:6px; }
+.fp-meta-item .value{ font-size:14.5px; color:var(--text); }
+
+.portfolio-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+}
+@media (max-width:1080px){ .portfolio-grid{ grid-template-columns:repeat(3,1fr);} }
+@media (max-width:760px){ .portfolio-grid{ grid-template-columns:repeat(2,1fr); gap:14px;} }
+@media (max-width:460px){ .portfolio-grid{ grid-template-columns:1fr; } }
+
+.p-card{
+  position:relative; border-radius:6px; overflow:hidden; background:var(--surface);
+  aspect-ratio:9/15.5;
+  cursor:pointer;
+  border:1px solid var(--line-soft);
+  transition:opacity .4s var(--ease), transform .4s var(--ease);
+}
+.p-card.hide{ display:none; }
+.p-card video{ width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
+.p-card:hover video{ transform:scale(1.045); }
+.p-card-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.82) 100%);
+  display:flex; flex-direction:column; justify-content:flex-end; padding:16px;
+  pointer-events:none;
+}
+.p-card-cat{
+  font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:6px;
+}
+.p-card-title{ font-family:'Bricolage Grotesque', sans-serif; font-weight:600; font-size:15px; color:var(--text); line-height:1.25; }
+.p-card-controls{
+  position:absolute; top:10px; right:10px; display:flex; gap:6px; z-index:4;
+}
+.p-ctrl-btn{
+  width:28px; height:28px; border-radius:50%; background:rgba(0,0,0,.55);
+  color:#fff; font-size:12px; display:flex; align-items:center; justify-content:center;
+  pointer-events:auto; border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(3px);
+}
+.p-card-play{
+  position:absolute; top:10px; left:10px; z-index:4;
+  width:28px; height:28px; border-radius:50%; background:rgba(0,0,0,.55);
+  color:#fff; font-size:11px; display:flex; align-items:center; justify-content:center;
+  border:1px solid rgba(255,255,255,.2);
+}
+
+/* ---------- SERVICES ---------- */
+.services-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+@media (max-width:900px){ .services-grid{ grid-template-columns:1fr;} }
+.service-card{ background:var(--bg); padding:38px 30px; transition:background .3s; }
+.service-card:hover{ background:var(--surface); }
+.service-card h4{ font-size:19px; margin-bottom:12px; }
+.service-card p{ color:var(--text-dim); font-size:14.5px; }
+
+/* ---------- WHY WORK WITH ME ---------- */
+.why-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; }
+@media (max-width:900px){ .why-grid{ grid-template-columns:repeat(2,1fr);} }
+@media (max-width:560px){ .why-grid{ grid-template-columns:1fr;} }
+.why-card{
+  border:1px solid var(--line); border-radius:6px; padding:32px 24px;
+  opacity:0; transform:translateY(24px);
+  transition:opacity .6s var(--ease), transform .6s var(--ease), border-color .3s;
+}
+.why-card.in{ opacity:1; transform:translateY(0); }
+.why-card:hover{ border-color:var(--accent); }
+.why-num{ font-family:'IBM Plex Mono', monospace; color:var(--accent); font-size:13px; margin-bottom:18px; }
+.why-card h4{ font-size:17.5px; margin-bottom:10px; }
+.why-card p{ color:var(--text-dim); font-size:14.5px; }
+
+/* ---------- WORKFLOW ---------- */
+.workflow{ background:var(--bg-alt); }
+.wf-list{ display:flex; flex-direction:column; }
+.wf-row{
+  display:grid; grid-template-columns:100px 1fr; gap:30px;
+  padding:30px 0; border-top:1px solid var(--line);
+  align-items:baseline;
+}
+.wf-row:last-child{ border-bottom:1px solid var(--line); }
+.wf-tc{ font-family:'IBM Plex Mono', monospace; color:var(--accent); font-size:13px; }
+.wf-body h4{ font-size:20px; margin-bottom:6px; }
+.wf-body p{ color:var(--text-dim); font-size:15px; max-width:560px; }
+@media (max-width:600px){ .wf-row{ grid-template-columns:1fr; gap:8px;} }
+
+/* ---------- STACK ---------- */
+.stack-intro{ max-width:640px; margin-bottom:50px; }
+.stack-intro p{ color:var(--text-dim); font-size:16.5px; }
+.stack-grid{ display:flex; flex-wrap:wrap; gap:16px; }
+.stack-pill{
+  border:1px solid var(--line); border-radius:40px; padding:16px 26px;
+  display:flex; align-items:center; gap:10px;
+  font-family:'Bricolage Grotesque', sans-serif; font-weight:600; font-size:16px;
+  transition:border-color .3s, transform .3s;
+}
+.stack-pill:hover{ border-color:var(--accent); transform:translateY(-2px); }
+.stack-pill .dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); }
+.stack-sub{ font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--text-dimmer); display:block; margin-top:2px; }
+.stack-note{ margin-top:36px; font-size:13.5px; color:var(--text-dimmer); max-width:560px; }
+
+/* ---------- CONTACT / FINAL CTA ---------- */
+.contact{ position:relative; overflow:hidden; }
+.contact-grid{
+  display:grid; grid-template-columns:1fr auto; gap:60px; align-items:center;
+}
+@media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; text-align:center;} }
+.contact h2{ font-size:clamp(34px,5.2vw,60px); margin-bottom:18px; }
+.contact-sub{ color:var(--text-dim); font-size:18px; margin-bottom:38px; max-width:520px; }
+@media (max-width:900px){ .contact-sub{ margin-left:auto; margin-right:auto;} }
+.contact-links{ display:flex; flex-direction:column; gap:14px; margin-bottom:36px; }
+.contact-link-row{ display:flex; align-items:center; gap:14px; color:var(--text-dim); font-size:15.5px; }
+@media (max-width:900px){ .contact-link-row{ justify-content:center; } }
+.contact-link-row a{ color:var(--text); border-bottom:1px solid var(--line); transition:border-color .3s, color .3s; }
+.contact-link-row a:hover{ color:var(--accent); border-color:var(--accent); }
+.contact-photo{
+  width:280px; border-radius:6px; overflow:hidden; border:1px solid var(--line);
+}
+@media (max-width:900px){ .contact-photo{ margin:0 auto; width:220px;} }
+.contact-cta-row{ display:flex; gap:16px; flex-wrap:wrap; }
+@media (max-width:900px){ .contact-cta-row{ justify-content:center; } }
+
+/* ---------- FOOTER ---------- */
+footer{ border-top:1px solid var(--line); padding:56px 0 40px; }
+.footer-grid{ display:flex; justify-content:space-between; align-items:flex-start; gap:30px; flex-wrap:wrap; }
+.footer-brand h3{ font-size:20px; margin-bottom:4px; }
+.footer-brand .role{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; margin-bottom:14px; display:block; }
+.footer-brand p{ color:var(--text-dimmer); font-size:14px; max-width:320px; }
+.footer-contact{ display:flex; flex-direction:column; gap:8px; font-size:14px; color:var(--text-dim); }
+.footer-contact a:hover{ color:var(--accent); }
+.footer-bottom{ display:flex; justify-content:space-between; margin-top:50px; padding-top:24px; border-top:1px solid var(--line); font-size:12.5px; color:var(--text-dimmer); flex-wrap:wrap; gap:12px; }
+.footer-bottom a{ font-family:'IBM Plex Mono', monospace; }
+
+/* ---------- SCROLL REVEAL ---------- */
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in{ opacity:1; transform:translateY(0); }
+
+/* ---------- LIGHTBOX ---------- */
+.lightbox{
+  position:fixed; inset:0; z-index:2000;
+  background:rgba(6,6,7,.94);
+  display:none; align-items:center; justify-content:center;
+  padding:40px 20px;
+  backdrop-filter:blur(6px);
+}
+.lightbox.open{ display:flex; }
+.lightbox-inner{
+  position:relative; max-width:420px; width:100%;
+  aspect-ratio:9/16;
+  background:#000; border-radius:8px; overflow:hidden;
+}
+.lightbox-inner video{ width:100%; height:100%; object-fit:contain; background:#000; }
+.lightbox-close{
+  position:absolute; top:14px; left:14px; z-index:6; color:#fff; font-size:11px;
+  font-family:'IBM Plex Mono', monospace; letter-spacing:.06em;
+  display:flex; align-items:center; gap:6px;
+  background:rgba(0,0,0,.55); padding:8px 12px; border-radius:20px;
+  border:1px solid rgba(255,255,255,.2); backdrop-filter:blur(3px);
+}
+.lightbox-meta{
+  position:absolute; bottom:0; left:0; right:0; padding:18px 18px 16px;
+  background:linear-gradient(0deg, rgba(0,0,0,.85), transparent);
+  color:#fff;
+}
+.lightbox-meta .cat{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px; }
+.lightbox-meta .title{ font-family:'Bricolage Grotesque', sans-serif; font-weight:600; font-size:16px; }
+.lightbox-controls{
+  position:absolute; top:14px; right:14px; display:flex; gap:8px;
+}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#top" class="logo">Disney Montao<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#top" class="nav-close-link">Home</a></li>
+      <li><a href="#about" class="nav-close-link">About</a></li>
+      <li><a href="#work" class="nav-close-link">Work</a></li>
+      <li><a href="#services" class="nav-close-link">Services</a></li>
+      <li><a href="#stack" class="nav-close-link">Stack</a></li>
+      <li><a href="#contact" class="nav-close-link">Contact</a></li>
+      <a href="https://calendly.com/disneyaganmontano/30min" target="_blank" rel="noopener" class="btn btn-primary mobile-cta">Book a Call</a>
+    </ul>
+    <div class="nav-right">
+      <a href="https://calendly.com/disneyaganmontano/30min" target="_blank" rel="noopener" class="btn btn-primary">Book a Call</a>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">AI Video Editor</div>
+        <h1 class="reveal">I Make Ideas Worth<br>Stopping For.</h1>
+        <p class="hero-sub reveal">Social media strategy meets AI-powered video production.</p>
+        <p class="hero-body reveal">I create AI UGC ads, cinematic brand films, claymotion explainers, and social-first video content designed around one question:</p>
+        <p class="hero-question reveal">Will this survive the first three seconds of the feed?</p>
+        <div class="hero-ctas reveal">
+          <a href="#work" class="btn btn-primary">View My Work</a>
+          <a href="https://calendly.com/disneyaganmontano/30min" target="_blank" rel="noopener" class="btn btn-outline">Book a Call</a>
+        </div>
+      </div>
+      <div class="hero-frame viewfinder reveal" id="heroFrame">
+        <div class="vf-corner tl"></div><div class="vf-corner tr"></div>
+        <div class="vf-corner bl"></div><div class="vf-corner br"></div>
+        <div class="rec-badge"><span class="rec-dot"></span> REEL</div>
+        <div class="hero-tc mono" id="heroTC">00:00:00:00</div>
+        <button class="hero-sound-toggle" id="heroSoundBtn" aria-label="Toggle sound">🔇</button>
+        <video id="heroVideo" muted loop playsinline autoplay poster="assets/posters/Ascarma1.jpg">
+          <source src="assets/video/Ascarma1.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="wrap about-grid">
+      <div class="about-photo reveal">
+        <img src="assets/images/portrait_large.jpg" alt="Disney Montao at her editing desk">
+      </div>
+      <div>
+        <p class="about-statement reveal">"I didn't start on the timeline — I started in the content calendar."</p>
+        <div class="about-body">
+          <p class="reveal">Before I ever opened an editor, I was running social pages: planning content, writing captions, reading the analytics, and figuring out exactly where an audience loses interest and where it leans in.</p>
+          <p class="reveal">That's the part most video editors skip — and it's the part I lead with. Every cut, caption timing and hook I build is still made with a strategist's question in mind: <em>will this survive the first three seconds of the feed?</em></p>
+          <p class="reveal">Today I work as an <strong>AI Video Editor</strong>, combining traditional post-production (Premiere Pro, Photoshop, CapCut) with an AI-generation stack — turning briefs into claymotion explainers, AI UGC ads, and cinematic brand films, often without a single frame of real footage to start from.</p>
+        </div>
+        <div class="about-tags reveal">
+          <span class="about-tag">Social Strategy</span>
+          <span class="about-tag">Creative Direction</span>
+          <span class="about-tag">AI Video Generation</span>
+          <span class="about-tag">Post-Production</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIRST THREE SECONDS -->
+  <section class="f3s" id="f3s">
+    <div class="f3s-ring"></div>
+    <div class="wrap f3s-inner">
+      <div class="f3s-countdown" id="f3sCountdown">
+        <div class="f3s-num" data-n="3">3</div>
+        <div class="f3s-sep">·</div>
+        <div class="f3s-num" data-n="2">2</div>
+        <div class="f3s-sep">·</div>
+        <div class="f3s-num" data-n="1">1</div>
+      </div>
+      <h2>Will this survive the first three seconds of the feed?</h2>
+      <p>Attention is earned before the message ever lands. The hook, the cut, the caption timing — every one of them is decided by that first beat, not the last.</p>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="work-head-row">
+        <div class="section-head" style="margin-bottom:0;">
+          <div class="eyebrow">00:00:00:00 — Selected Work</div>
+          <h2>The Reel</h2>
+          <p>AI UGC ads, cinematic brand films, claymotion explainers, and animation — built from real briefs, real deliverables.</p>
+        </div>
+        <div class="filters" id="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="ai-ugc">AI UGC</button>
+          <button class="filter-btn" data-filter="cinematic">Cinematic Ads</button>
+          <button class="filter-btn" data-filter="claymotion">Claymotion</button>
+          <button class="filter-btn" data-filter="animation">Animation</button>
+        </div>
+      </div>
+
+      <!-- Featured -->
+      <div class="featured-project reveal">
+        <div class="featured-video">
+          <video class="auto-vid" muted loop playsinline preload="metadata" poster="assets/posters/XRAYAI1.jpg" data-src="assets/video/XRAYAI1.mp4">
+          </video>
+        </div>
+        <div class="featured-info">
+          <div class="eyebrow">Featured Project</div>
+          <h3>XRAYAI — The Quiet Pitch</h3>
+          <p>A brand testimonial shot and paced like a short film rather than a phone-cam ad — softer light, slower cuts, and a message that doesn't need a caption hook to land.</p>
+          <div class="fp-meta">
+            <div class="fp-meta-item"><div class="label">Project Type</div><div class="value">Cinematic Ad</div></div>
+            <div class="fp-meta-item"><div class="label">Production</div><div class="value">AI generation + edit</div></div>
+            <div class="fp-meta-item"><div class="label">Creative Approach</div><div class="value">Slow pacing, warm lighting, single testimonial voice</div></div>
+            <div class="fp-meta-item"><div class="label">Tools</div><div class="value">AI video generation, Premiere Pro</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="portfolio-grid" id="portfolioGrid">
+
+        <div class="p-card reveal" data-cat="ai-ugc" data-title="Ascarma — Consulting, Reframed" data-desc="Direct-to-camera testimonial built around one confident hook, edited for the pace of a feed scroll rather than a boardroom pitch." data-cat-label="AI UGC" data-src="assets/video/Ascarma1.mp4" data-poster="assets/posters/Ascarma1.jpg">
+          <video class="auto-vid" muted loop playsinline preload="metadata" poster="assets/posters/Ascarma1.jpg" data-src="assets/video/Ascarma1.mp4"></video>
+          <div class="p-card-play">▶</div>
+          <div class="p-card-controls"><button class="p-ctrl-btn mute-btn" data-state="muted">🔇</button></div>
+          <div class="p-card-overlay">
+            <div class="p-card-cat">AI UGC</div>
+            <div class="p-card-title">Ascarma — Consulting, Reframed</div>
+          </div>
+        </div>
+
+        <div class="p-card reveal" data-cat="ai-ugc" data-title="Gold — Talk Like You Train" data-desc="A gym-floor testimonial that opens mid-thought — the unpolished authenticity that stops a scroll faster than a studio setup." data-cat-label="AI UGC" data-src="assets/video/Gold.mp4" data-poster="assets/posters/Gold.jpg">
+          <video class="auto-vid" muted loop playsinline preload="metadata" poster="assets/posters/Gold.jpg" data-src="assets/video/Gold.mp4"></video>
+          <div class="p-card-play">▶</div>
+          <div class="p-card-controls"><button class="p-ctrl-btn mute-btn" data-state="muted">🔇</button></div>
+          <div class="p-card-overlay">
+            <div class="p-card-cat">AI UGC</div>
+            <div class="p-card-title">Gold — Talk Like You Train</div>
+          </div>
+        </div>
+
+        <div class="p-card reveal" data-cat="ai-ugc" data-title="Pond's — Stop Scrolling" data-desc="Built around an on-screen hook line before the product ever appears — the first line has to earn the second." data-cat-label="AI UGC" data-src="assets/video/Ponds.mp4" data-poster="assets/posters/Ponds.jpg">
+          <video class="auto-vid" muted loop playsinline preload="metadata" poster="assets/posters/Ponds.jpg" data-src="assets/video/Ponds.mp4"></video>
+          <div class="p-card-play">▶</div>
+          <div class="p-card-controls"><button class="p-ctrl-btn mute-btn" data-state="muted">🔇</button></div>
+          <div class="p-card-overlay">
+            <div class="p-card-cat">AI UGC</div>
+            <div class="p-card-title">Pond's — Stop Scrolling</div>
+          </div>
+        </div>
+
+        <div class="p-card reveal" data-cat="cinematic" data-title="XRAYAI — The Quiet Pitch" data-desc="A brand testimonial shot and paced like a short film — softer light, slower cuts, no caption hook required." data-cat-label="Cinematic Ad" data-src="assets/video/XRAYAI1.mp4" data-poster="assets/posters/XRAYAI1.jpg">
+          <video class="auto-vid" muted loop playsinline preload="metadata" poster="assets/posters/XRAYAI1.jpg" data-src="assets/video/XRAYAI1.mp4"></video>
+          <div class="p-card-play">▶</div>
+          <div class="p-card-controls"><button class="p-ctrl-btn mute-btn" data-state="muted">🔇</button></div>
+          <div class="p-card-overlay">
+            <div class="p-card-cat">Cinematic Ad</div>
+            <div class="p-card-title">XRAYAI — The Quiet Pitch</div>
+          </div>
+        </div>
+
+        <div class="p-card reveal" data-cat="claymotion" data-title="Centrum Kids — Vitamins With a Face" data-desc="Sculpted characters and hand-built texture standing in for footage that was never going to exist any other way." data-cat-label="Claymotion" data-src="assets/video/Centrum.mp4" data-poster="assets/posters/Centrum.jpg">
+          <video class="auto-vid" muted loop playsinline preload="metadata" poster="assets/posters/Centrum.jpg" data-src="assets/video/Centrum.mp4"></video>
+          <div class="p-card-play">▶</div>
+          <div class="p-card-controls"><button class="p-ctrl-btn mute-btn" data-state="muted">🔇</button></div>
+          <div class="p-card-overlay">
+            <div class="p-card-cat">Claymotion</div>
+            <div class="p-card-title">Centrum Kids — Vitamins With a Face</div>
+          </div>
+        </div>
+
+        <div class="p-card reveal" data-cat="claymotion" data-title="Hygienix — Germs, Personified" data-desc="Claymation antagonists turn a hygiene product's whole pitch into a tiny stop-motion-style skit." data-cat-label="Claymotion" data-src="assets/video/Hygienix.mp4" data-poster="assets/posters/Hygienix.jpg">
+          <video class="auto-vid" muted loop playsinline preload="metadata" poster="assets/posters/Hygienix.jpg" data-src="assets/video/Hygienix.mp4"></video>
+          <div class="p-card-play">▶</div>
+          <div class="p-card-controls"><button class="p-ctrl-btn mute-btn" data-state="muted">🔇</button></div>
+          <div class="p-card-overlay">
+            <div class="p-card-cat">Claymotion</div>
+            <div class="p-card-title">Hygienix — Germs, Personified</div>
+          </div>
+        </div>
+
+        <div class="p-card reveal" data-cat="animation" data-title="GrabMart — Open the App" data-desc="Flat illustrated motion built to walk a viewer through an app experience without ever filming a screen." data-cat-label="Animation" data-src="assets/video/Grab.mp4" data-poster="assets/posters/Grab.jpg">
+          <video class="auto-vid" muted loop playsinline preload="metadata" poster="assets/posters/Grab.jpg" data-src="assets/video/Grab.mp4"></video>
+          <div class="p-card-play">▶</div>
+          <div class="p-card-controls"><button class="p-ctrl-btn mute-btn" data-state="muted">🔇</button></div>
+          <div class="p-card-overlay">
+            <div class="p-card-cat">Animation</div>
+            <div class="p-card-title">GrabMart — Open the App</div>
+          </div>
+        </div>
+
+        <div class="p-card reveal" data-cat="animation" data-title="Lingokids — A Story, In Motion" data-desc="Character-driven animation paced for a young audience's attention span, not an adult's." data-cat-label="Animation" data-src="assets/video/lingokids_story_video.mp4" data-poster="assets/posters/lingokids_story_video.jpg">
+          <video class="auto-vid" muted loop playsinline preload="metadata" poster="assets/posters/lingokids_story_video.jpg" data-src="assets/video/lingokids_story_video.mp4"></video>
+          <div class="p-card-play">▶</div>
+          <div class="p-card-controls"><button class="p-ctrl-btn mute-btn" data-state="muted">🔇</button></div>
+          <div class="p-card-overlay">
+            <div class="p-card-cat">Animation</div>
+            <div class="p-card-title">Lingokids — A Story, In Motion</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Services</div>
+        <h2>What I Do</h2>
+        <p>Focused on the work I actually make — not a generic agency menu.</p>
+      </div>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <h4>AI Video Editing</h4>
+          <p>Editing and post-production for AI-generated and traditional footage.</p>
+        </div>
+        <div class="service-card">
+          <h4>AI UGC Ads</h4>
+          <p>AI-generated UGC-style advertising content built to feel native to the feed.</p>
+        </div>
+        <div class="service-card">
+          <h4>Cinematic AI Ads</h4>
+          <p>Cinematic brand advertisements created with AI-generated visuals.</p>
+        </div>
+        <div class="service-card">
+          <h4>Claymotion &amp; Animation</h4>
+          <p>Creative animated and claymotion-style explainers and advertisements.</p>
+        </div>
+        <div class="service-card">
+          <h4>Social-First Video Content</h4>
+          <p>Short-form content designed specifically for social media platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY WORK WITH ME -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Why Work With Me</div>
+        <h2>The Advantage</h2>
+      </div>
+      <div class="why-grid" id="whyGrid">
+        <div class="why-card">
+          <div class="why-num">01</div>
+          <h4>Strategy First</h4>
+          <p>I come from social media strategy, so I think about the audience before I think about the edit.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">02</div>
+          <h4>Built for the Feed</h4>
+          <p>Hooks, pacing, captions, visual changes, and storytelling are designed around how people actually consume content.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">03</div>
+          <h4>AI-Powered Production</h4>
+          <p>I can turn concepts into visual content using AI generation, even when there's no traditional footage to begin with.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">04</div>
+          <h4>Creative + Technical</h4>
+          <p>Creative direction, AI generation, editing, motion, and post-production — all one workflow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKFLOW -->
+  <section class="section workflow" id="workflow">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Process</div>
+        <h2>How I Work</h2>
+      </div>
+      <div class="wf-list reveal">
+        <div class="wf-row"><div class="wf-tc">01</div><div class="wf-body"><h4>Brief</h4><p>Understand the goal, audience, offer, and message.</p></div></div>
+        <div class="wf-row"><div class="wf-tc">02</div><div class="wf-body"><h4>Concept</h4><p>Develop the creative direction, hook, and visual concept.</p></div></div>
+        <div class="wf-row"><div class="wf-tc">03</div><div class="wf-body"><h4>Generate</h4><p>Use AI tools to create visual assets, scenes, characters, or footage when needed.</p></div></div>
+        <div class="wf-row"><div class="wf-tc">04</div><div class="wf-body"><h4>Edit</h4><p>Combine AI generation with traditional post-production, pacing, sound, captions, and visual storytelling.</p></div></div>
+        <div class="wf-row"><div class="wf-tc">05</div><div class="wf-body"><h4>Optimize</h4><p>Make sure the final video is designed to capture attention and work on the intended platform.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="section" id="stack">
+    <div class="wrap">
+      <div class="section-head stack-intro reveal">
+        <div class="eyebrow">AI-Powered Creative Workflow</div>
+        <h2>The Stack</h2>
+        <p>Combining AI tools, video editing, creative strategy, and social media expertise to turn ideas into high-performing visual content.</p>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-pill"><span class="dot"></span> Premiere Pro</div>
+        <div class="stack-pill"><span class="dot"></span> Photoshop</div>
+        <div class="stack-pill"><span class="dot"></span> CapCut</div>
+        <div class="stack-pill"><span class="dot"></span> Manus AI</div>
+      </div>
+      <p class="stack-note">Traditional post-production (Premiere Pro, Photoshop, CapCut) paired with an AI-generation stack — the tools change project to project; the workflow doesn't.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT / FINAL CTA -->
+  <section class="section contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="eyebrow reveal">Get In Touch</div>
+        <h2 class="reveal">Have an idea for<br>your next video?</h2>
+        <p class="contact-sub reveal">Let's turn it into something people stop scrolling for.</p>
+        <div class="contact-links reveal">
+          <div class="contact-link-row">Email — <a href="mailto:disneyaganmontano@gmail.com">disneyaganmontano@gmail.com</a></div>
+          <div class="contact-link-row">Phone — <a href="tel:+639763670813">+63 976 367 0813</a></div>
+        </div>
+        <div class="contact-cta-row reveal">
+          <a href="https://calendly.com/disneyaganmontano/30min" target="_blank" rel="noopener" class="btn btn-primary">Book a Call</a>
+          <a href="mailto:disneyaganmontano@gmail.com" class="btn btn-outline">Send an Email</a>
+        </div>
+      </div>
+      <div class="contact-photo reveal">
+        <img src="assets/images/portrait_medium.jpg" alt="Disney Montao">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Disney Montao</h3>
+        <span class="role">AI Video Editor</span>
+        <p>Creating scroll-stopping stories with AI, creativity, and strategy.</p>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:disneyaganmontano@gmail.com">disneyaganmontano@gmail.com</a>
+        <a href="tel:+639763670813">+63 976 367 0813</a>
+        <a href="https://calendly.com/disneyaganmontano/30min" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:8px; width:fit-content;">Book a Call</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Disney Montao. All rights reserved.</span>
+      <span class="mono">Manila, PH</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <div class="lightbox-close" id="lightboxClose">✕ CLOSE</div>
+    <video id="lightboxVideo" playsinline loop controls></video>
+    <div class="lightbox-controls">
+      <button class="p-ctrl-btn" id="lightboxMute">🔊</button>
+      <button class="p-ctrl-btn" id="lightboxFullscreen">⛶</button>
+    </div>
+    <div class="lightbox-meta">
+      <div class="cat" id="lightboxCat"></div>
+      <div class="title" id="lightboxTitle"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- Header scroll state ---------- */
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive:true });
+
+/* ---------- Mobile nav ---------- */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+document.querySelectorAll('.nav-close-link').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+  });
+});
+
+/* ---------- Scroll reveal ---------- */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+const whyObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('in'), Array.from(entry.target.parentNode.children).indexOf(entry.target) * 90);
+      whyObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.why-card').forEach(el => whyObserver.observe(el));
+
+/* ---------- First Three Seconds countdown ---------- */
+const f3sSection = document.getElementById('f3s');
+let f3sPlayed = false;
+const f3sObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !f3sPlayed) {
+      f3sPlayed = true;
+      const nums = document.querySelectorAll('.f3s-num');
+      nums.forEach((n, i) => {
+        setTimeout(() => {
+          n.classList.add('lit');
+          setTimeout(() => n.classList.add('flash'), 550);
+        }, i * 480);
+      });
+    }
+  });
+}, { threshold: 0.55 });
+f3sObserver.observe(f3sSection);
+
+/* ---------- Lazy-load + autoplay-in-view for grid videos ---------- */
+const autoVids = document.querySelectorAll('.auto-vid');
+const loadedVids = new Set();
+
+function loadVideoSrc(video) {
+  if (loadedVids.has(video)) return;
+  const src = video.getAttribute('data-src');
+  if (!src) return;
+  const source = document.createElement('source');
+  source.src = src;
+  source.type = 'video/mp4';
+  video.appendChild(source);
+  video.load();
+  loadedVids.add(video);
+}
+
+const vidObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const video = entry.target;
+    if (entry.isIntersecting) {
+      loadVideoSrc(video);
+      const playPromise = video.play();
+      if (playPromise !== undefined) playPromise.catch(() => {});
+    } else {
+      video.pause();
+    }
+  });
+}, { threshold: 0.4 });
+autoVids.forEach(v => vidObserver.observe(v));
+
+/* Load a couple of hero-adjacent videos immediately for perceived speed */
+loadVideoSrc(document.querySelector('.featured-video .auto-vid'));
+
+/* ---------- Hero video sound toggle ---------- */
+const heroVideo = document.getElementById('heroVideo');
+const heroSoundBtn = document.getElementById('heroSoundBtn');
+heroSoundBtn.addEventListener('click', () => {
+  heroVideo.muted = !heroVideo.muted;
+  heroSoundBtn.textContent = heroVideo.muted ? '🔇' : '🔊';
+});
+
+/* Hero timecode ticker (cosmetic) */
+const heroTC = document.getElementById('heroTC');
+if (heroVideo) {
+  heroVideo.addEventListener('timeupdate', () => {
+    const t = heroVideo.currentTime || 0;
+    const mm = String(Math.floor(t/60)).padStart(2,'0');
+    const ss = String(Math.floor(t%60)).padStart(2,'0');
+    const ff = String(Math.floor((t%1)*30)).padStart(2,'0');
+    heroTC.textContent = `00:${mm}:${ss}:${ff}`;
+  });
+}
+
+/* ---------- Per-card mute toggle (does not stop playback) ---------- */
+document.querySelectorAll('.p-card').forEach(card => {
+  const video = card.querySelector('.auto-vid');
+  const muteBtn = card.querySelector('.mute-btn');
+  muteBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    video.muted = !video.muted;
+    muteBtn.textContent = video.muted ? '🔇' : '🔊';
+    try {
+      if (!video.muted) localStorage.setItem('dm_portfolio_sound', 'on');
+    } catch(err){}
+  });
+});
+
+/* ---------- Portfolio filtering ---------- */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.p-card');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.getAttribute('data-filter');
+    cards.forEach(card => {
+      const match = filter === 'all' || card.getAttribute('data-cat') === filter;
+      card.classList.toggle('hide', !match);
+    });
+  });
+});
+
+/* ---------- Lightbox ---------- */
+const lightbox = document.getElementById('lightbox');
+const lightboxVideo = document.getElementById('lightboxVideo');
+const lightboxCat = document.getElementById('lightboxCat');
+const lightboxTitle = document.getElementById('lightboxTitle');
+const lightboxClose = document.getElementById('lightboxClose');
+const lightboxMute = document.getElementById('lightboxMute');
+const lightboxFullscreen = document.getElementById('lightboxFullscreen');
+
+function openLightbox(src, poster, title, cat) {
+  lightboxVideo.pause();
+  lightboxVideo.innerHTML = '';
+  const source = document.createElement('source');
+  source.src = src;
+  source.type = 'video/mp4';
+  lightboxVideo.appendChild(source);
+  lightboxVideo.poster = poster;
+  lightboxVideo.muted = false;
+  lightboxMute.textContent = '🔊';
+  lightboxVideo.load();
+  lightboxTitle.textContent = title;
+  lightboxCat.textContent = cat;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  lightboxVideo.play().catch(() => {
+    lightboxVideo.muted = true;
+    lightboxMute.textContent = '🔇';
+    lightboxVideo.play().catch(()=>{});
+  });
+  // pause all grid videos while lightbox is open
+  autoVids.forEach(v => v.pause());
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  lightboxVideo.pause();
+  // resume in-view grid videos
+  autoVids.forEach(v => {
+    const rect = v.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      const p = v.play();
+      if (p !== undefined) p.catch(()=>{});
+    }
+  });
+}
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    openLightbox(card.getAttribute('data-src'), card.getAttribute('data-poster'), card.getAttribute('data-title'), card.getAttribute('data-cat-label'));
+  });
+});
+document.querySelector('.featured-video').addEventListener('click', () => {
+  openLightbox('assets/video/XRAYAI1.mp4', 'assets/posters/XRAYAI1.jpg', 'XRAYAI — The Quiet Pitch', 'Cinematic Ad');
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+lightboxMute.addEventListener('click', () => {
+  lightboxVideo.muted = !lightboxVideo.muted;
+  lightboxMute.textContent = lightboxVideo.muted ? '🔇' : '🔊';
+});
+lightboxFullscreen.addEventListener('click', () => {
+  if (lightboxVideo.requestFullscreen) lightboxVideo.requestFullscreen();
+  else if (lightboxVideo.webkitRequestFullscreen) lightboxVideo.webkitRequestFullscreen();
+});
+</script>
+
+</body>
+</html>
